@@ -1,51 +1,69 @@
 class ScoutsController < ApplicationController
-  before_action :set_scout, only: [:show, :edit, :update, :destroy]
-
   # GET /scouts
   # GET /scouts.json
   def index
     @scouts = Scout.all
+
+    respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @scouts }
+    end
   end
 
   # GET /scouts/1
   # GET /scouts/1.json
   def show
+    @scout = Scout.find(params[:id])
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @scout }
+    end
   end
 
   # GET /scouts/new
+  # GET /scouts/new.json
   def new
     @scout = Scout.new
+
+    respond_to do |format|
+      format.html # new.html.erb
+      format.json { render json: @scout }
+    end
   end
 
   # GET /scouts/1/edit
   def edit
+    @scout = Scout.find(params[:id])
   end
 
   # POST /scouts
   # POST /scouts.json
   def create
-    @scout = Scout.new(scout_params)
+    @scout = Scout.new(params[:scout])
 
     respond_to do |format|
       if @scout.save
         format.html { redirect_to @scout, notice: 'Scout was successfully created.' }
-        format.json { render action: 'show', status: :created, location: @scout }
+        format.json { render json: @scout, status: :created, location: @scout }
       else
-        format.html { render action: 'new' }
+        format.html { render action: "new" }
         format.json { render json: @scout.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /scouts/1
-  # PATCH/PUT /scouts/1.json
+  # PUT /scouts/1
+  # PUT /scouts/1.json
   def update
+    @scout = Scout.find(params[:id])
+
     respond_to do |format|
-      if @scout.update(scout_params)
+      if @scout.update_attributes(params[:scout])
         format.html { redirect_to @scout, notice: 'Scout was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: 'edit' }
+        format.html { render action: "edit" }
         format.json { render json: @scout.errors, status: :unprocessable_entity }
       end
     end
@@ -54,21 +72,12 @@ class ScoutsController < ApplicationController
   # DELETE /scouts/1
   # DELETE /scouts/1.json
   def destroy
+    @scout = Scout.find(params[:id])
     @scout.destroy
+
     respond_to do |format|
       format.html { redirect_to scouts_url }
       format.json { head :no_content }
     end
   end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_scout
-      @scout = Scout.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def scout_params
-      params.require(:scout).permit(:first_namestring last_name)
-    end
 end

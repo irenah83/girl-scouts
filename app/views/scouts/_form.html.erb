@@ -12,8 +12,24 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :first_namestring last_name %><br>
-    <%= f.text_field :first_namestring last_name %>
+    <%= f.label :first_name %><br />
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.label :last_name %><br />
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
+    <%= f.label :member_since %><br />
+    <%= f.number_field :member_since %>
+  </div>
+  <div class="field">
+    <%= f.label :leader_id %><br />
+    <%= f.number_field :leader_id %>
+  </div>
+  <div class="field">
+    <%= f.label :chapter_id %><br />
+    <%= f.number_field :chapter_id %>
   </div>
   <div class="actions">
     <%= f.submit %>

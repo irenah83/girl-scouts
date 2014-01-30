@@ -1,0 +1,25 @@
+<h1>Listing badges_scouts</h1>
+
+<table>
+  <tr>
+    <th>Scout</th>
+    <th>Badge</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @badges_scouts.each do |badges_scout| %>
+  <tr>
+    <td><%= badges_scout.scout_id %></td>
+    <td><%= badges_scout.badge_id %></td>
+    <td><%= link_to 'Show', badges_scout %></td>
+    <td><%= link_to 'Edit', edit_badges_scout_path(badges_scout) %></td>
+    <td><%= link_to 'Destroy', badges_scout, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Badges scout', new_badges_scout_path %>

@@ -1,0 +1,25 @@
+<%= form_for(@badges_scout) do |f| %>
+  <% if @badges_scout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@badges_scout.errors.count, "error") %> prohibited this badges_scout from being saved:</h2>
+
+      <ul>
+      <% @badges_scout.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :scout_id %><br />
+    <%= f.number_field :scout_id %>
+  </div>
+  <div class="field">
+    <%= f.label :badge_id %><br />
+    <%= f.number_field :badge_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

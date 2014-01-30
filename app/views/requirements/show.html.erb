@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Goal:</b>
+  <%= @requirement.goal_id %>
+</p>
+
+<p>
+  <b>Goal type:</b>
+  <%= @requirement.goal_type %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @requirement.name %>
+</p>
+
+<p>
+  <b>Instructions:</b>
+  <%= @requirement.instructions %>
+</p>
+
+
+<%= link_to 'Edit', edit_requirement_path(@requirement) %> |
+<%= link_to 'Back', requirements_path %>
