@@ -1,0 +1,74 @@
+drop database mydb;
+
+create database mydb;
+
+use mydb;
+
+CREATE TABLE specialities (
+  id INT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+CREATE TABLE leaders (
+  id INT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(45) NOT NULL,
+  last_name VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  speciality_id INT NOT NULL,
+  PRIMARY KEY (id), FOREIGN KEY (speciality_id) REFERENCES specialities(id));
+ CREATE INDEX leaders_speciality_idx ON specialities(id);
+
+CREATE TABLE organizations (
+  id INT NOT NULL AUTO_INCREMENT,
+  organization_name VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+CREATE TABLE chapters (
+  id INT NOT NULL AUTO_INCREMENT,
+  name VARCHAR(45) NOT NULL,
+  leader_id INT NOT NULL,
+  organization_id INT NOT NULL,
+  meeting_time VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id), FOREIGN KEY (leader_id) REFERENCES leaders(id),
+  FOREIGN KEY (organization_id) REFERENCES organizations(id));
+  CREATE INDEX chapters_leader_idx ON leaders(id);
+  CREATE INDEX chapters_organization_idx ON organizations(id);
+
+CREATE TABLE scouts (
+  id INT NOT NULL AUTO_INCREMENT,
+  first_name VARCHAR(45) NOT NULL,
+  last_name VARCHAR(45) NOT NULL,
+  member_since INT NOT NULL,
+  leader_id INT NOT NULL,
+  chapter_id INT NOT NULL,
+  PRIMARY KEY (id), FOREIGN KEY (leader_id) REFERENCES leaders(id),
+  FOREIGN KEY (chapter_id) REFERENCES chapters(id)); 
+  CREATE INDEX scouts_last_name_idx ON scouts(last_name);
+
+CREATE TABLE addresses (
+  id INT NOT NULL AUTO_INCREMENT,
+  first_line VARCHAR(100) NOT NULL,
+  city VARCHAR(100) NOT NULL,
+  state VARCHAR(45) NOT NULL,
+  organization_id INT NOT NULL,
+  PRIMARY KEY (id), FOREIGN KEY (organization_id) REFERENCES organizations(id));
+  CREATE INDEX addresses_organization_idx ON addresses(city);
+
+CREATE TABLE IF NOT EXISTS badges (
+  id INT NOT NULL AUTO_INCREMENT,
+  badge_name VARCHAR(45) NOT NULL,
+  PRIMARY KEY (id));
+
+CREATE TABLE IF NOT EXISTS requirements (
+  id INT NOT NULL AUTO_INCREMENT,
+  goal_id INT NULL,
+  goal_type VARCHAR(45) NOT NULL,
+  name VARCHAR(45) NOT NULL,
+  instructions TEXT NOT NULL,
+  PRIMARY KEY (id));
+
+CREATE TABLE IF NOT EXISTS badges_scouts (
+  scout_id INT NOT NULL,
+  badge_id INT NOT NULL,
+  FOREIGN KEY (scout_id) REFERENCES scouts(id), FOREIGN KEY (badge_id) REFERENCES
+  badges (id));
