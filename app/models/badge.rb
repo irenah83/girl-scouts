@@ -1,4 +1,4 @@
 class Badge < ActiveRecord::Base
-  attr_accessible :badge_name
-  has_and_belongs_to_many :scouts
+    has_and_belongs_to_many :scouts
+    has_many: requirements, :as => :goal
 end

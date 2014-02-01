@@ -1,29 +1,33 @@
 <h1>Listing requirements</h1>
 
 <table>
-  <tr>
-    <th>Goal</th>
-    <th>Goal type</th>
-    <th>Name</th>
-    <th>Instructions</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Goal</th>
+      <th>Goal type</th>
+      <th>Name</th>
+      <th>Instructions</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% @requirements.each do |requirement| %>
-  <tr>
-    <td><%= requirement.goal_id %></td>
-    <td><%= requirement.goal_type %></td>
-    <td><%= requirement.name %></td>
-    <td><%= requirement.instructions %></td>
-    <td><%= link_to 'Show', requirement %></td>
-    <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
-    <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @requirements.each do |requirement| %>
+      <tr>
+        <td><%= requirement.goal_id %></td>
+        <td><%= requirement.goal_type %></td>
+        <td><%= requirement.name %></td>
+        <td><%= requirement.instructions %></td>
+        <td><%= link_to 'Show', requirement %></td>
+        <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
+        <td><%= link_to 'Destroy', requirement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
+<br>
 
 <%= link_to 'New Requirement', new_requirement_path %>

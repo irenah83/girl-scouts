@@ -18,7 +18,7 @@ class ScoutsControllerTest < ActionController::TestCase
 
   test "should create scout" do
     assert_difference('Scout.count') do
-      post :create, scout: { first_namestring last_name: @scout.first_namestring last_name }
+      post :create, scout: { chapter_id: @scout.chapter_id, first_name: @scout.first_name, last_name: @scout.last_name, leader_id: @scout.leader_id, member_since: @scout.member_since }
     end
 
     assert_redirected_to scout_path(assigns(:scout))
@@ -35,7 +35,7 @@ class ScoutsControllerTest < ActionController::TestCase
   end
 
   test "should update scout" do
-    patch :update, id: @scout, scout: { first_namestring last_name: @scout.first_namestring last_name }
+    patch :update, id: @scout, scout: { chapter_id: @scout.chapter_id, first_name: @scout.first_name, last_name: @scout.last_name, leader_id: @scout.leader_id, member_since: @scout.member_since }
     assert_redirected_to scout_path(assigns(:scout))
   end
 

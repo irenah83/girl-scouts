@@ -1,0 +1,12 @@
+TEST.
+<h1>Report</h1>
+<% Organization.all.each do |organization| %>
+	<h2><%= organization.organization_name %></h2>
+	<%= organization.chapters.each do |chapter| %>
+		<h3><%= chapter.name %></h3>
+			<h4><%= chapter.leaders.each do |leader|%></h4>
+				<h5><%= leader.first_name%></h5>
+			<% end %>
+		<% end %>
+	<% end%>
+

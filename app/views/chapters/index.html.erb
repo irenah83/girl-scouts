@@ -1,29 +1,28 @@
 <h1>Listing chapters</h1>
 
 <table>
-  <tr>
-    <th>Name</th>
-    <th>Leader</th>
-    <th>Organization</th>
-    <th>Meeting time</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Leader</th>
+      <th>Organization</th>
+      <th>Meeting time</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% @chapters.each do |chapter| %>
-  <tr>
-    <td><%= chapter.name %></td>
-    <td><%= chapter.leader_id %></td>
-    <td><%= chapter.organization_id %></td>
-    <td><%= chapter.meeting_time %></td>
-    <td><%= link_to 'Show', chapter %></td>
-    <td><%= link_to 'Edit', edit_chapter_path(chapter) %></td>
-    <td><%= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+      <tr>
+        <td><%= chapter.name %></td>
+        <td><%= chapter.leader_id %></td>
+        <td><%= chapter.organization_id %></td>
+        <td><%= chapter.meeting_time %></td>
+        <td><%= link_to 'Show', chapter %></td>
+        <td><%= link_to 'Edit', edit_chapter_path(chapter) %></td>
+        <td><%= link_to 'Destroy', chapter, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Chapter', new_chapter_path %>

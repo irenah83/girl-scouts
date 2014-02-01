@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Goal:</b>
+  <strong>Goal:</strong>
   <%= @requirement.goal_id %>
 </p>
 
 <p>
-  <b>Goal type:</b>
+  <strong>Goal type:</strong>
   <%= @requirement.goal_type %>
 </p>
 
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%= @requirement.name %>
 </p>
 
 <p>
-  <b>Instructions:</b>
+  <strong>Instructions:</strong>
   <%= @requirement.instructions %>
 </p>
-
 
 <%= link_to 'Edit', edit_requirement_path(@requirement) %> |
 <%= link_to 'Back', requirements_path %>

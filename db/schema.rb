@@ -11,49 +11,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140110145248) do
+ActiveRecord::Schema.define(version: 20140201211215) do
 
-  create_table "cats", force: true do |t|
-    t.string   "name"
-    t.integer  "birth_date"
-    t.string   "email"
+  create_table "addresses", force: true do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "employees", force: true do |t|
-    t.string "name"
-    t.string "password"
-    t.string "experience"
-    t.string "email"
+  create_table "badges", force: true do |t|
+    t.string   "badge_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "goals", force: true do |t|
-    t.string "name"
-    t.string "description"
+  create_table "chapters", force: true do |t|
+    t.string   "name"
+    t.integer  "leader_id"
+    t.integer  "organization_id"
+    t.string   "meeting_time"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "holders", force: true do |t|
-    t.string  "name"
-    t.integer "age"
-    t.string  "city"
-    t.string  "country"
+  create_table "leaders", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.integer  "speciality_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "records", force: true do |t|
-    t.datetime "date"
+  create_table "organizations", force: true do |t|
+    t.string   "organization_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "requirements", force: true do |t|
+    t.integer  "goal_id"
+    t.string   "goal_type"
+    t.string   "name"
+    t.text     "instructions"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "scouts", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.integer  "member_since"
+    t.integer  "leader_id"
+    t.integer  "chapter_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "specialities", force: true do |t|
     t.string   "name"
-    t.integer  "birth_date"
-    t.string   "email"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tests", force: true do |t|
+    t.string   "name"
+    t.text     "birthday_wish"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", force: true do |t|
-    t.string   "name"
+    t.integer  "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>First name:</b>
+  <strong>First name:</strong>
   <%= @leader.first_name %>
 </p>
 
 <p>
-  <b>Last name:</b>
+  <strong>Last name:</strong>
   <%= @leader.last_name %>
 </p>
 
 <p>
-  <b>Email:</b>
+  <strong>Email:</strong>
   <%= @leader.email %>
 </p>
 
 <p>
-  <b>Specialty:</b>
-  <%= @leader.specialty %>
+  <strong>Speciality:</strong>
+  <%= @leader.speciality_id %>
 </p>
-
 
 <%= link_to 'Edit', edit_leader_path(@leader) %> |
 <%= link_to 'Back', leaders_path %>

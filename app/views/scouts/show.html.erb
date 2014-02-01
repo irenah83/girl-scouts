@@ -1,30 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>First name:</b>
+  <strong>First name:</strong>
   <%= @scout.first_name %>
 </p>
 
 <p>
-  <b>Last name:</b>
+  <strong>Last name:</strong>
   <%= @scout.last_name %>
 </p>
 
 <p>
-  <b>Member since:</b>
+  <strong>Member since:</strong>
   <%= @scout.member_since %>
 </p>
 
 <p>
-  <b>Leader:</b>
+  <strong>Leader:</strong>
   <%= @scout.leader_id %>
 </p>
 
 <p>
-  <b>Chapter:</b>
+  <strong>Chapter:</strong>
   <%= @scout.chapter_id %>
 </p>
-
 
 <%= link_to 'Edit', edit_scout_path(@scout) %> |
 <%= link_to 'Back', scouts_path %>

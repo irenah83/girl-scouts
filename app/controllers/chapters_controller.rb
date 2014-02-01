@@ -1,69 +1,48 @@
 class ChaptersController < ApplicationController
+  before_action :set_chapter, only: [:show, :edit, :update, :destroy]
+
   # GET /chapters
   # GET /chapters.json
-  def index
-    @chapters = Chapter.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @chapters }
-    end
-  end
 
   # GET /chapters/1
   # GET /chapters/1.json
   def show
-    @chapter = Chapter.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @chapter }
-    end
   end
 
   # GET /chapters/new
-  # GET /chapters/new.json
   def new
     @chapter = Chapter.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @chapter }
-    end
   end
 
   # GET /chapters/1/edit
   def edit
-    @chapter = Chapter.find(params[:id])
   end
 
   # POST /chapters
   # POST /chapters.json
   def create
-    @chapter = Chapter.new(params[:chapter])
+    @chapter = Chapter.new(chapter_params)
 
     respond_to do |format|
       if @chapter.save
         format.html { redirect_to @chapter, notice: 'Chapter was successfully created.' }
-        format.json { render json: @chapter, status: :created, location: @chapter }
+        format.json { render action: 'show', status: :created, location: @chapter }
       else
-        format.html { render action: "new" }
+        format.html { render action: 'new' }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /chapters/1
-  # PUT /chapters/1.json
+  # PATCH/PUT /chapters/1
+  # PATCH/PUT /chapters/1.json
   def update
-    @chapter = Chapter.find(params[:id])
-
     respond_to do |format|
-      if @chapter.update_attributes(params[:chapter])
+      if @chapter.update(chapter_params)
         format.html { redirect_to @chapter, notice: 'Chapter was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @chapter.errors, status: :unprocessable_entity }
       end
     end
@@ -72,12 +51,21 @@ class ChaptersController < ApplicationController
   # DELETE /chapters/1
   # DELETE /chapters/1.json
   def destroy
-    @chapter = Chapter.find(params[:id])
     @chapter.destroy
-
     respond_to do |format|
       format.html { redirect_to chapters_url }
       format.json { head :no_content }
     end
   end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_chapter
+      @chapter = Chapter.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def chapter_params
+      params.require(:chapter).permit(:name, :leader_id, :organization_id, :meeting_time)
+    end
 end

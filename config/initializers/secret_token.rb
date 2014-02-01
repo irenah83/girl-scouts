@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-GirlScouts::Application.config.secret_key_base = '70f5d32aefa62c23bd8c45ccd474b33dafea5c128534d9c369006076ee54f50b48e2cacface71289b58d5638ef5fcc405767a0909837b67e03ea05593888dfea'
+GirlScouts::Application.config.secret_key_base = '46aa1d4d0b59d543cfa43eb327426a405f33fb9cef2965431bc7fdc5524cfa8f48e0c090daf0532afd2a61392e14902452612f9c0c9569b2d6f8453dc333ef03'

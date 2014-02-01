@@ -1,7 +1,23 @@
 GirlScouts::Application.routes.draw do
+  get "welcome/index"
+  get "scouts/report_on_everything"
+  resources :tests
+
+  resources :requirements
+
+  resources :badges
+
   resources :scouts
 
-  resources :cats
+  resources :specialities
+
+  resources :leaders
+
+  resources :addresses
+
+  resources :organizations
+
+  resources :chapters
 
   resources :users
 

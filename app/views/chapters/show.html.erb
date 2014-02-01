@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <b>Name:</b>
+  <strong>Name:</strong>
   <%= @chapter.name %>
 </p>
 
 <p>
-  <b>Leader:</b>
+  <strong>Leader:</strong>
   <%= @chapter.leader_id %>
 </p>
 
 <p>
-  <b>Organization:</b>
+  <strong>Organization:</strong>
   <%= @chapter.organization_id %>
 </p>
 
 <p>
-  <b>Meeting time:</b>
+  <strong>Meeting time:</strong>
   <%= @chapter.meeting_time %>
 </p>
-
 
 <%= link_to 'Edit', edit_chapter_path(@chapter) %> |
 <%= link_to 'Back', chapters_path %>

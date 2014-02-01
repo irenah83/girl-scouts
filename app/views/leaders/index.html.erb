@@ -1,29 +1,33 @@
 <h1>Listing leaders</h1>
 
 <table>
-  <tr>
-    <th>First name</th>
-    <th>Last name</th>
-    <th>Email</th>
-    <th>Specialty</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+  <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>Email</th>
+      <th>Speciality</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
 
-<% @leaders.each do |leader| %>
-  <tr>
-    <td><%= leader.first_name %></td>
-    <td><%= leader.last_name %></td>
-    <td><%= leader.email %></td>
-    <td><%= leader.specialty %></td>
-    <td><%= link_to 'Show', leader %></td>
-    <td><%= link_to 'Edit', edit_leader_path(leader) %></td>
-    <td><%= link_to 'Destroy', leader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+  <tbody>
+    <% @leaders.each do |leader| %>
+      <tr>
+        <td><%= leader.first_name %></td>
+        <td><%= leader.last_name %></td>
+        <td><%= leader.email %></td>
+        <td><%= leader.speciality_id %></td>
+        <td><%= link_to 'Show', leader %></td>
+        <td><%= link_to 'Edit', edit_leader_path(leader) %></td>
+        <td><%= link_to 'Destroy', leader, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<br />
+<br>
 
 <%= link_to 'New Leader', new_leader_path %>
